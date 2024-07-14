@@ -1,9 +1,7 @@
 filippo.io/edwards25519 v1.0.0 h1:0wAIcmJUqRdI8IJ/3eGi5/HwXZWPujYXXlkrQogz0Ek=
 filippo.io/edwards25519 v1.0.0/go.mod h1:N1IkdkCkiLB6tki+MYJoSx2JTY9NUlxZE7eHn5EwJns=
-github.com/JeremyJalpha/MenuBotLib v0.0.0-20240707163354-35718e5863a0 h1:wu3W47WyS+nVQ0yfg0aZ/+WfOc9qakzfcMXoxaVfK9g=
-github.com/JeremyJalpha/MenuBotLib v0.0.0-20240707163354-35718e5863a0/go.mod h1:oCVPI1Ho7AspWuDTCPdTt3S7EKxO1J7D3kfeRNaCG0o=
-github.com/JeremyJalpha/MenuBotLib v1.0.3 h1:8CxeyBeUG9ds+c1yAB7CYpDKNY8E4J0PQ0KULRE2Ps8=
-github.com/JeremyJalpha/MenuBotLib v1.0.3/go.mod h1:oCVPI1Ho7AspWuDTCPdTt3S7EKxO1J7D3kfeRNaCG0o=
+github.com/JeremyJalpha/MenuBotLib v1.0.6 h1:Jo1lOXoc3fUJ5t9e7dHpCipGDzIQFm0iao0N/I/lWOU=
+github.com/JeremyJalpha/MenuBotLib v1.0.6/go.mod h1:oCVPI1Ho7AspWuDTCPdTt3S7EKxO1J7D3kfeRNaCG0o=
 github.com/coreos/go-systemd/v22 v22.5.0/go.mod h1:Y58oyj3AT4RCenI/lSvhwexgC+NSVTIJ3seZv2GcEnc=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=

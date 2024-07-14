@@ -26,7 +26,7 @@ import (
 	"go.mau.fi/whatsmeow/types/events"
 	waLog "go.mau.fi/whatsmeow/util/log"
 
-	wb "github.com/JeremyJalpha/MenuBotLib"
+	mb "github.com/JeremyJalpha/MenuBotLib"
 	"github.com/go-chi/chi/v5"
 	"github.com/mdp/qrterminal"
 )
@@ -41,6 +41,10 @@ import (
 // PASSPHRASE=*************
 
 const (
+	catalogueID string = "Pig"
+
+	prclstPreamble = "All fertilizer quoted per gram."
+
 	isTest              = true
 	whatsAppServer      = "s.whatsapp.net"
 	staleMsgTimeOut int = 10
@@ -75,17 +79,16 @@ func RemoveNonASCIICharacters(s string) string {
 	return builder.String()
 }
 
-func eventHandler(evt interface{}, c *whatsmeow.Client, db *sql.DB, checkoutInfo wb.CheckoutInfo, envvars EnvVars) {
-
+func eventHandler(evt interface{}, c *whatsmeow.Client, db *sql.DB, prcList mb.Pricelist, checkoutInfo mb.CheckoutInfo, envvars EnvVars) {
 	switch v := evt.(type) {
 	case *events.Message:
 		senderNumber := strings.Split(v.Info.Sender.ToNonAD().User, "@")[0]
 		message := v.Message.GetConversation()
 		msgCleaned := RemoveNonASCIICharacters(message)
 		if senderNumber != envvars.HostNumber && isTest == false {
-			convo := wb.NewConversationContext(db, senderNumber, msgCleaned, isAutoInc)
+			convo := mb.NewConversationContext(db, senderNumber, msgCleaned, prcList, isAutoInc)
 			convo.UserInfo.CellNumber = senderNumber
-			botResp := wb.GetResponseToMsg(convo, db, checkoutInfo, isAutoInc)
+			botResp := mb.GetResponseToMsg(convo, db, checkoutInfo, isAutoInc)
 
 			_, err := c.SendMessage(context.Background(), types.NewJID(senderNumber, whatsAppServer), &waProto.Message{Conversation: proto.String(botResp)})
 			if err != nil {
@@ -160,7 +163,7 @@ func main() {
 	}
 	clientLog := waLog.Stdout("Client", "DEBUG", true)
 	chatClient := whatsmeow.NewClient(deviceStore, clientLog)
-	checkoutInfo := wb.CheckoutInfo{
+	checkoutInfo := mb.CheckoutInfo{
 		ReturnURL:      envVars.HomebaseURL + returnBaseURL,
 		CancelURL:      envVars.HomebaseURL + cancelBaseURL,
 		NotifyURL:      envVars.HomebaseURL + notifyBaseURL,
@@ -170,8 +173,18 @@ func main() {
 		HostURL:        envVars.PfHost,
 		ItemNamePrefix: ItemNamePrefix,
 	}
+	log.Println("Loading pricelist from DB...")
+	ctlgItms, err := mb.GetCatalogueItemsFromDB(db, catalogueID)
+	if err != nil {
+		log.Fatal("Error reading pricelist from database: ", err)
+	}
+	ctlgSelections := mb.CmpsCtlgSlctnsFromCtlgItms(ctlgItms)
+	prclist := mb.Pricelist{
+		PrlstPreamble: prclstPreamble,
+		Catalogue:     ctlgSelections,
+	}
 	chatClient.AddEventHandler(func(evt interface{}) {
-		eventHandler(evt, chatClient, db, checkoutInfo, envVars)
+		eventHandler(evt, chatClient, db, prclist, checkoutInfo, envVars)
 	})
 
 	// Define routes

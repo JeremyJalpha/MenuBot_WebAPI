@@ -3,7 +3,7 @@ module github.com/JeremyJalpha/MenuBot_WebAPI
 go 1.21.2
 
 require (
-	github.com/JeremyJalpha/MenuBotLib v1.0.3
+	github.com/JeremyJalpha/MenuBotLib v1.0.6
 	github.com/go-chi/chi/v5 v5.0.12
 	github.com/lib/pq v1.10.9
 	github.com/mdp/qrterminal v1.0.1
