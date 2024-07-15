@@ -1,7 +1,7 @@
 filippo.io/edwards25519 v1.0.0 h1:0wAIcmJUqRdI8IJ/3eGi5/HwXZWPujYXXlkrQogz0Ek=
 filippo.io/edwards25519 v1.0.0/go.mod h1:N1IkdkCkiLB6tki+MYJoSx2JTY9NUlxZE7eHn5EwJns=
-github.com/JeremyJalpha/MenuBotLib v1.0.7 h1:4o3bcYPsCcTWim7g+8n/bn1GgPv78i8dpDip5Ip+VJQ=
-github.com/JeremyJalpha/MenuBotLib v1.0.7/go.mod h1:oCVPI1Ho7AspWuDTCPdTt3S7EKxO1J7D3kfeRNaCG0o=
+github.com/JeremyJalpha/MenuBotLib v1.0.8 h1:mj5/VEnWMp0eGQvfKYURAtbShH2I9cyrA4+Di2fCmAM=
+github.com/JeremyJalpha/MenuBotLib v1.0.8/go.mod h1:oCVPI1Ho7AspWuDTCPdTt3S7EKxO1J7D3kfeRNaCG0o=
 github.com/coreos/go-systemd/v22 v22.5.0/go.mod h1:Y58oyj3AT4RCenI/lSvhwexgC+NSVTIJ3seZv2GcEnc=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
